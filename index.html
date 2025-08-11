@@ -17,20 +17,21 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        html { scroll-behavior: smooth; }
+
         body {
             background-color: var(--background-color);
             color: var(--text-color);
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
         
         /* --- Общая структура --- */
         .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .section { padding: 100px 0; }
-        .section-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; text-align: center; margin-bottom: 80px; text-transform: uppercase; }
+        .section { padding: 120px 0; }
+        .section-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; text-align: center; margin-bottom: 80px; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- Секция 1: Главный экран --- */
+        /* --- Сцена 1: Главный экран --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -38,77 +39,61 @@
             justify-content: center;
             align-items: center;
             text-align: center; 
-            position: relative;
         }
-        .hero-logo { font-size: clamp(3rem, 10vw, 7rem); font-weight: 900; color: var(--accent-color); }
-        .hero-tagline { font-size: clamp(1rem, 3vw, 1.5rem); color: var(--text-secondary); letter-spacing: 1px; }
+        .hero-logo { font-size: clamp(3rem, 10vw, 8rem); font-weight: 900; color: var(--accent-color); line-height: 1; }
+        .hero-tagline { font-size: clamp(1rem, 3vw, 1.5rem); color: var(--text-secondary); letter-spacing: 1px; margin-top: 10px; }
 
-        /* --- Секция 2: Обо мне --- */
+        /* --- Сцена 2: Обо мне --- */
         .about-grid { display: grid; grid-template-columns: 350px 1fr; gap: 60px; align-items: center; text-align: left; max-width: 1100px; margin: 0 auto; }
-        .about-photo { width: 100%; border-radius: 50%; }
-        .about-text h2 { font-size: 2rem; margin-bottom: 15px; }
+        .about-photo { width: 100%; border-radius: 50%; border: 3px solid var(--divider-color); }
+        .about-text h2 { font-size: 2rem; margin-bottom: 20px; font-weight: 700; line-height: 1.3; }
         .about-text p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); }
 
-        /* --- Секция 3: Работы (Полосы) --- */
+        /* --- Сцена 3: Работы (Полосы) --- */
         .works-container { display: flex; flex-direction: column; gap: 20px; }
         .work-banner {
-            width: 100%;
-            height: 50vh;
-            max-height: 500px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            padding: 40px;
-            text-decoration: none;
-            color: var(--text-color);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
+            width: 100%; height: 60vh; max-height: 600px;
+            background-size: cover; background-position: center;
+            position: relative; display: flex; align-items: flex-end;
+            padding: 40px; text-decoration: none; color: var(--text-color);
+            border-radius: 10px; overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        .work-banner:hover { transform: scale(1.02); }
-        .work-banner::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%); }
+        .work-banner:hover { transform: scale(1.02); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+        .work-banner::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 50%); z-index: 1; }
         .work-info { position: relative; z-index: 2; }
-        .work-title { font-size: 2rem; font-weight: 700; }
-        .work-role { font-size: 1rem; color: var(--text-secondary); }
+        .work-title { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 700; }
+        .work-role { font-size: clamp(0.9rem, 2vw, 1rem); color: var(--text-secondary); margin-top: 5px; }
 
-        /* --- Секция 4: Инструменты (Квадраты) --- */
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        /* --- Сцена 4: Инструменты (Квадраты) --- */
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
         .tool-card {
             background: #111; border: 1px solid var(--divider-color);
-            padding: 30px; border-radius: 10px; text-decoration: none;
-            color: var(--text-color); transition: background-color 0.3s ease;
-        }
-        .tool-card:hover { background-color: #222; }
-        .tool-title { font-size: 1.5rem; color: var(--accent-color); margin-bottom: 15px; }
-        .tool-desc { color: var(--text-secondary); }
-        .tool-status { margin-top: 20px; font-weight: 700; display: block; }
-        
-        /* --- Футер --- */
-        .footer {
-            padding: 80px 0;
-            border-top: 1px solid var(--divider-color);
-            margin-top: 60px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            padding: 40px; border-radius: 10px; text-decoration: none;
+            color: var(--text-color); transition: background-color 0.3s ease, transform 0.3s ease;
             text-align: left;
         }
-        .footer-col h3 { font-size: 0.9rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 15px; }
-        .footer-col p, .footer-col a { font-size: 1rem; color: var(--text-color); text-decoration: none; }
-        .footer-col a:hover { text-decoration: underline; color: var(--accent-color); }
+        .tool-card:hover { background-color: #1a1a1a; transform: translateY(-5px); }
+        .tool-title { font-size: 1.5rem; color: var(--accent-color); margin-bottom: 15px; font-weight: 700; }
+        .tool-desc { color: var(--text-secondary); line-height: 1.7; }
+        .tool-status { margin-top: 25px; font-weight: 700; display: inline-block; color: var(--accent-color); }
+        
+        /* --- Футер --- */
+        .footer { padding: 80px 0 40px 0; border-top: 1px solid var(--divider-color); margin-top: 60px; font-size: 0.9rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: left; max-width: 1100px; margin: 0 auto; }
+        .footer-col h3 { font-size: 1rem; text-transform: uppercase; color: var(--text-color); margin-bottom: 20px; font-weight: 700; }
         .footer-col ul { list-style: none; padding: 0; }
-        .footer-col li { margin-bottom: 8px; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease; }
+        .footer-col a:hover { color: var(--accent-color); }
+        .copyright { text-align: center; margin-top: 80px; color: var(--text-secondary); opacity: 0.5; }
 
         /* --- Адаптивность --- */
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
             .about-grid { grid-template-columns: 1fr; text-align: center; }
-            .about-photo { max-width: 200px; margin: 0 auto 30px auto; }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .about-photo { max-width: 250px; margin: 0 auto 40px auto; }
+            .footer-grid { text-align: center; }
         }
     </style>
 </head>
@@ -127,7 +112,7 @@
         <div class="container">
             <div class="about-grid">
                 <div>
-                    <!-- ЗАМЕНИТЕ НА ВАШЕ ФОТО -->
+                    <!-- ЗАМЕНИТЕ НА ССЫЛКУ НА ВАШЕ ФОТО -->
                     <img src="https://i.ibb.co/6y1Y5d2/your-photo.jpg" alt="Ник Еллинский" class="about-photo">
                 </div>
                 <div class="about-text">
@@ -144,26 +129,42 @@
             <div class="works-container">
                 
                 <!-- РАБОТА 1 -->
-                <a href="https://vimeo.com/ellinsky/letmeout" target="_blank" class="work-banner" style="background-image: url('https://i.vimeocdn.com/video/1393693240-d667613531b7899538c227847240f13501a39d8920b78c935d886a113331a90c-d?mw=1800&q=70');">
+                <a href="ССЫЛКА_НА_ПРОЕКТ_1" target="_blank" class="work-banner" style="background-image: url('ССЫЛКА_НА_КАРТИНКУ_1');">
                     <div class="work-info">
-                        <h3 class="work-title">Х/ф «Выпусти меня»</h3>
-                        <p class="work-role">Режиссер, сценарист</p>
+                        <h3 class="work-title">Название проекта 1</h3>
+                        <p class="work-role">Роль (Режиссер, сценарист)</p>
                     </div>
                 </a>
 
                 <!-- РАБОТА 2 -->
-                <a href="https://vimeo.com/ellinsky/theroom" target="_blank" class="work-banner" style="background-image: url('https://i.vimeocdn.com/video/1408018335-9502b70f074d6c4d8e57630737a329d79904949514e8b0931215b2e666a34c1b-d?mw=1800&q=70');">
+                <a href="ССЫЛКА_НА_ПРОЕКТ_2" target="_blank" class="work-banner" style="background-image: url('ССЫЛКА_НА_КАРТИНКУ_2');">
                     <div class="work-info">
-                        <h3 class="work-title">К/ф «Номер»</h3>
-                        <p class="work-role">Режиссер, сценарист</p>
+                        <h3 class="work-title">Название проекта 2</h3>
+                        <p class="work-role">Роль</p>
                     </div>
                 </a>
                 
                 <!-- РАБОТА 3 -->
-                <a href="https://vimeo.com/ellinsky/thai" target="_blank" class="work-banner" style="background-image: url('https://i.vimeocdn.com/video/723405788-251f2f815a510f0f354784742a177218684784f107f1f35a4d360aa4f8c148f3-d?mw=1800&q=70');">
+                <a href="ССЫЛКА_НА_ПРОЕКТ_3" target="_blank" class="work-banner" style="background-image: url('ССЫЛКА_НА_КАРТИНКУ_3');">
                     <div class="work-info">
-                        <h3 class="work-title">Таиланд Инвест</h3>
-                        <p class="work-role">Режиссер</p>
+                        <h3 class="work-title">Название проекта 3</h3>
+                        <p class="work-role">Роль</p>
+                    </div>
+                </a>
+
+                <!-- РАБОТА 4 -->
+                <a href="ССЫЛКА_НА_ПРОЕКТ_4" target="_blank" class="work-banner" style="background-image: url('ССЫЛКА_НА_КАРТИНКУ_4');">
+                    <div class="work-info">
+                        <h3 class="work-title">Название проекта 4</h3>
+                        <p class="work-role">Роль</p>
+                    </div>
+                </a>
+
+                <!-- РАБОТА 5 -->
+                <a href="ССЫЛКА_НА_ПРОЕКТ_5" target="_blank" class="work-banner" style="background-image: url('ССЫЛКА_НА_КАРТИНКУ_5');">
+                    <div class="work-info">
+                        <h3 class="work-title">Название проекта 5</h3>
+                        <p class="work-role">Роль</p>
                     </div>
                 </a>
                 
@@ -175,7 +176,7 @@
     <section class="section tools">
         <div class="container">
             <h2 class="section-title">Инструменты для авторов</h2>
-            <p style="max-width: 800px; margin-bottom: 60px;">Бесплатные методические материалы, разработанные для усиления ваших историй. Глубокие разборы, профессиональные инструкции и практические инструменты.</p>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 60px auto; color: var(--text-secondary);">Бесплатные методические материалы, разработанные для усиления ваших историй. Глубокие разборы, профессиональные инструкции и практические инструменты.</p>
             <div class="tools-grid">
                 
                 <a href="https://Sator9189.github.io/AI-for-Writers" target="_blank" class="tool-card">
@@ -190,6 +191,8 @@
                     <span class="tool-status">Скоро...</span>
                 </a>
                 
+                <!-- ДОБАВЬТЕ СЮДА НОВУЮ МЕТОДИЧКУ, СКОПИРОВАВ БЛОК ВЫШЕ -->
+
             </div>
         </div>
     </section>
@@ -199,41 +202,32 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3>Copyright</h3>
-                    <p>© 2025 ELLINSKY</p>
+                    <h3>Награды</h3>
+                    <ul>
+                        <li><a href="ССЫЛКА_НА_НАГРАДУ_1" target="_blank">FFF - Best Producer</a></li>
+                        <li><a href="ССЫЛКА_НА_НАГРАДУ_2" target="_blank">ZIFF - Winner</a></li>
+                        <!-- Добавьте другие награды -->
+                    </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Contact</h3>
+                    <h3>Профили</h3>
+                     <ul>
+                        <li><a href="https://vimeo.com/ellinsky" target="_blank">Vimeo</a></li>
+                        <li><a href="https://www.kinopoisk.ru/name/10187187/" target="_blank">Кинопоиск</a></li>
+                        <!-- Добавьте другие профили -->
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Контакты</h3>
                     <ul>
                         <li><a href="mailto:nik@ellinsky.com">nik@ellinsky.com</a></li>
                         <li><a href="https://t.me/ellinsky" target="_blank">Telegram</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3>Social</h3>
-                    <ul>
-                        <li><a href="https://vimeo.com/ellinsky" target="_blank">Vimeo</a></li>
-                        <!-- ДОБАВЬТЕ ССЫЛКУ НА КИНОПОИСК, ЕСЛИ НУЖНО -->
-                        <!-- <li><a href="#" target="_blank">Кинопоиск</a></li> -->
-                    </ul>
-                </div>
             </div>
+            <p class="copyright">© 2025 ELLINSKY | Visionary Filmmaking & Commercial Storytelling</p>
         </div>
     </footer>
 
-    <script>
-        // Анимация появления секций при скролле
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
 </body>
 </html>
