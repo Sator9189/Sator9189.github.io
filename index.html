@@ -73,7 +73,7 @@
         .nav-logo {
             font-size: 24px;
             font-weight: 800;
-            color: var(--accent-orange);
+            color: var(--text-primary);
             text-decoration: none;
             letter-spacing: -0.5px;
         }
@@ -147,7 +147,7 @@
         .hero-title {
             font-size: clamp(4rem, 12vw, 10rem);
             font-weight: 900;
-            color: var(--text-primary);
+            color: var(--accent-orange);
             line-height: 0.9;
             margin-bottom: 30px;
             letter-spacing: -3px;
@@ -253,11 +253,15 @@
             margin-bottom: 30px;
         }
 
+        .awards-section {
+            margin-top: 60px; 
+        }
+
         .awards-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             gap: 20px;
-            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .award-item {
@@ -268,24 +272,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
             transition: all 0.3s ease;
+            width: 160px;
+            height: 160px;
+            
         }
 
         .award-item:hover {
             border-color: var(--accent-orange);
             color: var(--accent-orange);
+            transform: translateY(-5px);
         }
 
         .award-image {
-            width: 100%;
-            height: 100%;
+            width: 80%;
+            height: 80%;
             object-fit: contain;
-            padding: 10px;
+        }
+
+        .award-image--enlarge {
+            transform: scale(1.2); 
         }
 
         .kinopoisk-link {
@@ -619,19 +625,22 @@
                     <p>С 2017 года, основав несколько продакшнов, создаю визуальные истории, от рекламных роликов до художественных проектов (кино, сериалы).</p>
                     <p>Моё преимущество — это редкое сочетание творческой интуиции и чёткого подхода. Вижу нестандартно и довожу проект до результата. Фокус на выразительных образах, продуманной драматургии, сильном киноязыке и музыкальном сопровождении.</p>
                     <p>Создаю проекты, в которых визуальный стиль, драматургическая глубина и организационная точность работают как единый выразительный язык. Истории, которые трансформируют зрителя: визуально, эмоционально, концептуально.</p>
+                    <div class="awards-section scroll-reveal">
+                        <div class="awards-grid">
+                            <div class="award-item"><img src="./images/Best_fashion_film.png" alt="Best Fashion Film Award" class="award-image award-image--enlarge"></div>
+                            <div class="award-item"><img src="./images/Best_script.png" alt="Best Script Award" class="award-image award-image--enlarge"></div>
+                            <div class="award-item"><img src="./images/zilant_award_white.png" alt="Zilant Award" class="award-image"></div>
+                            <div class="award-item"><img src="./images/zilant_winner_white.png" alt="Zilant Winner Award" class="award-image"></div>
+                        </div>
+                    </div>
+            
                 </div>
                 <div class="about-highlights scroll-reveal">
-                    <h4>Награды</h4>
-                    <div class="awards-grid">
-                        <div class="award-item"><img src="./images/Bestfashionfilm.png" alt="Best Fashion Film Award" class="award-image"></div>
-                        <div class="award-item"><img src="./images/Bestscript.png" alt="Best Script Award" class="award-image"></div>
-                        <div class="award-item"><img src="./images/zilant_award_white.png" alt="Zilant Award" class="award-image"></div>
-                        <div class="award-item"><img src="./images/zilant_winner_white.png" alt="Zilant Winner" class="winner-image"></div>
-                    </div>
-                    <a href="#" class="kinopoisk-link">Профиль на Кинопоиске</a>
+                    <img src="./images/my-photo.jpg" alt="Фотография ELLINSKY" class="about-photo">
+                    <a href="https://www.kinopoisk.ru/name/10187187/" class="kinopoisk-link">Профиль на Кинопоиске</a>
                 </div>
+            
             </div>
-        </div>
     </section>
 
     <!-- Works Section -->
@@ -639,40 +648,40 @@
         <div class="container">
             <h2 class="section-title scroll-reveal">Портфолио: избранные работы</h2>
             <div class="works-grid">
-                <div class="work-item scroll-reveal" onclick="window.open("https://vimeo.com/ellinsky/letmeout", "_blank")">
-                    <div class="work-bg" style="background-image: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);"></div>
+                <div class="work-item scroll-reveal" onclick="window.open('https://vimeo.com/ellinsky/letmeout', '_blank')">
+                    <div class="work-bg" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%), url('./images/vypusti_menya.png');"></div>
                     <div class="work-content">
                         <h3 class="work-title">Выпусти меня</h3>
-                        <p class="work-role">Художественный фильм • Режиссер</p>
+                        <p class="work-role">Художественный фильм • Сценарист • Продюсер  </p>
                     </div>
                 </div>
                 
-                <div class="work-item scroll-reveal" onclick="window.open("https://vimeo.com/ellinsky/lebofamily", "_blank")">
-                    <div class="work-bg" style="background-image: linear-gradient(135deg, #2a1a1a 0%, #3a2a2a 100%);"></div>
+                <div class="work-item scroll-reveal" onclick="window.open('https://vimeo.com/ellinsky/lebofamily', '_blank')">
+                    <div class="work-bg" style="background-image: linear-gradient(135deg, #2a1a1a 0%, #3a2a2a 100%), url('./images/vypusti_menya.png');"></div>
                     <div class="work-content">
                         <h3 class="work-title">Lebo Coffee</h3>
                         <p class="work-role">ТВ-реклама • Режиссер</p>
                     </div>
                 </div>
                 
-                <div class="work-item scroll-reveal" onclick="window.open("https://vimeo.com/ellinsky/thai", "_blank")">
-                    <div class="work-bg" style="background-image: linear-gradient(135deg, #1a2a1a 0%, #2a3a2a 100%);"></div>
+                <div class="work-item scroll-reveal" onclick="window.open('https://vimeo.com/ellinsky/thai', '_blank')">
+                    <div class="work-bg" style="background-image: linear-gradient(135deg, #1a2a1a 0%, #2a3a2a 100%), url('./images/vypusti_menya.png');"></div>
                     <div class="work-content">
                         <h3 class="work-title">Таиланд инвест</h3>
                         <p class="work-role">Имиджевая реклама • Режиссер</p>
                     </div>
                 </div>
                 
-                <div class="work-item scroll-reveal" onclick="window.open("https://vimeo.com/ellinsky/theroom", "_blank")">
-                    <div class="work-bg" style="background-image: linear-gradient(135deg, #2a2a1a 0%, #3a3a2a 100%);"></div>
+                <div class="work-item scroll-reveal" onclick="window.open('https://vimeo.com/ellinsky/theroom', '_blank')">
+                    <div class="work-bg" style="background-image: linear-gradient(135deg, #2a2a1a 0%, #3a3a2a 100%), url('./images/vypusti_menya.png');"></div>
                     <div class="work-content">
                         <h3 class="work-title">Номер</h3>
                         <p class="work-role">Короткометражный фильм • Режиссер</p>
                     </div>
                 </div>
                 
-                <div class="work-item scroll-reveal" onclick="window.open("https://vimeo.com/ellinsky/mbfw", "_blank")">
-                    <div class="work-bg" style="background-image: linear-gradient(135deg, #1a1a2a 0%, #2a2a3a 100%);"></div>
+                <div class="work-item scroll-reveal" onclick="window.open('https://vimeo.com/ellinsky/mbfw', '_blank')">
+                    <div class="work-bg" style="background-image: linear-gradient(135deg, #1a1a2a 0%, #2a2a3a 100%), url('./images/vypusti_menya.png');"></div>
                     <div class="work-content">
                         <h3 class="work-title">MBFW Russia</h3>
                         <p class="work-role">Музыкальный клип • Режиссер</p>
@@ -709,7 +718,7 @@
             <h2 class="section-title scroll-reveal">Контакты</h2>
             <div class="contact-links scroll-reveal">
                 <a href="mailto:nik@ellinsky.com" class="contact-link">Email</a>
-                <a href="https://t.me/ellinsky" target="_blank" class="contact-link">Telegram</a>
+                <a href="https://t.me/m/ux1h5a6WNWM6" target="_blank" class="contact-link">Telegram</a>
                 <a href="https://vimeo.com/ellinsky" target="_blank" class="contact-link">Vimeo</a>
             </div>
             <p class="copyright scroll-reveal">© 2025 ELLINSKY | Visionary Filmmaking & Commercial Storytelling</p>
@@ -759,15 +768,25 @@
             observer.observe(el);
         });
 
-        // Parallax effect for hero section
-        window.addEventListener("scroll", () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector(".hero");
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
+       // Parallax effect for hero section (only on desktop)
+window.addEventListener("scroll", () => {
+    if (window.innerWidth > 768) { 
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector(".hero");
+        if (hero) {
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+    } else {
+        const hero = document.querySelector(".hero");
+        if (hero) {
+            hero.style.transform = 'none';
+        }
+    }
+});
+
+window.addEventListener("resize", () => {
+    window.dispatchEvent(new Event('scroll'));
+});
     </script>
 </body>
 </html>
-
