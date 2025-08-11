@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELLINSKY | Visionary Filmmaking</title>
+    <title>ELLINSKY | Visionary Filmmaking & Commercial Storytelling</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
         
         :root {
             --background-color: #000000;
             --text-color: #FFFFFF;
-            --accent-color: #E87722;
+            --accent-color: #E87722; /* Ваш фирменный оранжевый */
             --text-secondary: rgba(255, 255, 255, 0.7);
+            --divider-color: rgba(255, 255, 255, 0.15);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,255 +22,217 @@
             color: var(--text-color);
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
-        }
-
-        /* --- Main Structure --- */
-        .container {
-            width: 100%;
-            position: relative;
+            scroll-behavior: smooth;
         }
         
-        .panel {
-            min-height: 100vh;
-            width: 100vw;
+        /* --- Общая структура --- */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        .section { padding: 100px 0; }
+        .section-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; text-align: center; margin-bottom: 80px; text-transform: uppercase; }
+
+        /* --- Секция 1: Главный экран --- */
+        .hero {
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            position: relative;
-            padding: 40px;
-        }
-        
-        .content { max-width: 1200px; width: 100%; }
-
-        /* --- Hero Panel --- */
-        .hero { z-index: 1; }
-        .video-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-        .hero::after {
-            content: ''; position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: -1;
-        }
-        .hero-logo { font-size: clamp(3rem, 12vw, 8rem); font-weight: 900; color: var(--accent-color); text-transform: uppercase; }
-        .hero-tagline { font-size: clamp(1rem, 3vw, 1.5rem); color: var(--text-secondary); }
-
-        /* --- About Panel --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 5vw;
-            align-items: center;
-            text-align: left;
-        }
-        .about-photo { width: 100%; max-width: 400px; border-radius: 50%; }
-        .about-text h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 20px; }
-        .about-text .subtitle { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 30px; }
-        .about-text p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); max-width: 600px; }
-        
-        /* --- Horizontal Scroll Section --- */
-        .horizontal-scroll-container {
-            height: 400vh; /* This controls the scroll duration */
             position: relative;
         }
-        .sticky-wrapper {
-            position: sticky;
-            top: 0;
-            height: 100vh;
+        .hero-logo { font-size: clamp(3rem, 10vw, 7rem); font-weight: 900; color: var(--accent-color); }
+        .hero-tagline { font-size: clamp(1rem, 3vw, 1.5rem); color: var(--text-secondary); letter-spacing: 1px; }
+
+        /* --- Секция 2: Обо мне --- */
+        .about-grid { display: grid; grid-template-columns: 350px 1fr; gap: 60px; align-items: center; text-align: left; max-width: 1100px; margin: 0 auto; }
+        .about-photo { width: 100%; border-radius: 50%; }
+        .about-text h2 { font-size: 2rem; margin-bottom: 15px; }
+        .about-text p { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); }
+
+        /* --- Секция 3: Работы (Полосы) --- */
+        .works-container { display: flex; flex-direction: column; gap: 20px; }
+        .work-banner {
             width: 100%;
-            overflow: hidden;
-        }
-        .horizontal-track {
-            height: 100%;
-            display: flex;
-            will-change: transform;
-        }
-        .work-panel {
-            height: 100vh;
-            width: 100vw;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            height: 50vh;
+            max-height: 500px;
             background-size: cover;
             background-position: center;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+            text-decoration: none;
+            color: var(--text-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
         }
-        .work-panel::after {
-             content: ''; position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 0;
-        }
-        .work-content { position: relative; z-index: 1; text-align: left; padding: 40px; }
-        .work-title { font-size: clamp(2rem, 5vw, 4rem); font-weight: 900; margin-bottom: 10px; }
-        .work-desc { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 30px; }
-        .work-link {
-            display: inline-block; padding: 12px 25px;
-            border: 2px solid var(--accent-color); color: var(--accent-color);
-            text-decoration: none; font-weight: 700; transition: all 0.3s ease;
-        }
-        .work-link:hover { background: var(--accent-color); color: var(--background-color); }
+        .work-banner:hover { transform: scale(1.02); }
+        .work-banner::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%); }
+        .work-info { position: relative; z-index: 2; }
+        .work-title { font-size: 2rem; font-weight: 700; }
+        .work-role { font-size: 1rem; color: var(--text-secondary); }
 
-        /* --- Tools Panel --- */
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .tool-card { background: #111; padding: 30px; border-radius: 10px; text-decoration: none; color: var(--text-color); transition: transform 0.3s ease; }
-        .tool-card:hover { transform: translateY(-5px); }
+        /* --- Секция 4: Инструменты (Квадраты) --- */
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .tool-card {
+            background: #111; border: 1px solid var(--divider-color);
+            padding: 30px; border-radius: 10px; text-decoration: none;
+            color: var(--text-color); transition: background-color 0.3s ease;
+        }
+        .tool-card:hover { background-color: #222; }
         .tool-title { font-size: 1.5rem; color: var(--accent-color); margin-bottom: 15px; }
         .tool-desc { color: var(--text-secondary); }
-        .tool-status { margin-top: 20px; font-weight: 700; color: var(--accent-color); }
+        .tool-status { margin-top: 20px; font-weight: 700; display: block; }
         
-        /* --- Contact Panel --- */
-        .contact h1 { margin-bottom: 30px; }
-        .contact p { font-size: 1.5rem; margin-bottom: 40px; }
-        .contact a { color: var(--text-color); text-decoration: none; font-size: 1.3rem; margin: 0 20px; transition: color 0.3s ease; }
-        .contact a:hover { color: var(--accent-color); }
+        /* --- Футер --- */
+        .footer {
+            padding: 80px 0;
+            border-top: 1px solid var(--divider-color);
+            margin-top: 60px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: left;
+        }
+        .footer-col h3 { font-size: 0.9rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 15px; }
+        .footer-col p, .footer-col a { font-size: 1rem; color: var(--text-color); text-decoration: none; }
+        .footer-col a:hover { text-decoration: underline; color: var(--accent-color); }
+        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col li { margin-bottom: 8px; }
 
-        /* --- Responsive --- */
+        /* --- Адаптивность --- */
         @media (max-width: 768px) {
+            .container { padding: 0 20px; }
             .about-grid { grid-template-columns: 1fr; text-align: center; }
-            .about-photo { max-width: 250px; margin: 0 auto 30px auto; }
-            .work-content { text-align: center; }
+            .about-photo { max-width: 200px; margin: 0 auto 30px auto; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <!-- СЦЕНА 1: ОТКРЫВАЮЩИЙ КАДР -->
-        <section class="panel hero">
-            <video playsinline autoplay muted loop class="video-bg">
-                <!-- ЗАМЕНИТЕ НА СВОЕ ВИДЕО -->
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-black-and-white-shot-of-a-projector-3346-large.mp4" type="video/mp4">
-            </video>
-            <div class="content">
-                <div class="hero-logo">ELLINSKY</div>
-                <div class="hero-tagline">VISIONARY FILMMAKING</div>
-            </div>
-        </section>
+    <!-- СЦЕНА 1: ГЛАВНЫЙ ЭКРАН -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-logo">ELLINSKY</h1>
+            <p class="hero-tagline">VISIONARY FILMMAKING & COMMERCIAL STORYTELLING</p>
+        </div>
+    </section>
 
-        <!-- СЦЕНА 2: КРУПНЫЙ ПЛАН (КТО Я?) -->
-        <section class="panel about">
-            <div class="content about-grid">
+    <!-- СЦЕНА 2: ОБО МНЕ -->
+    <section class="section about">
+        <div class="container">
+            <div class="about-grid">
                 <div>
-                     <!-- ЗАМЕНИТЕ НА СВОЕ ФОТО -->
+                    <!-- ЗАМЕНИТЕ НА ВАШЕ ФОТО -->
                     <img src="https://i.ibb.co/6y1Y5d2/your-photo.jpg" alt="Ник Еллинский" class="about-photo">
                 </div>
                 <div class="about-text">
-                    <h1>Манифест.</h1>
-                    <p class="subtitle">Режиссер, сценарист, креативный продюсер.</p>
-                    <p>Я создаю истории на стыке искусства и коммерции. Моя цель — соединить философский подтекст с мощным визуальным языком. Двигаясь от смысла к форме, от ощущения к четкой постановке, я создаю проекты, которые трансформируют зрителя.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- СЦЕНА 3: МОНТАЖНАЯ НАРЕЗКА (РАБОТЫ) -->
-        <section class="horizontal-scroll-container">
-            <div class="sticky-wrapper">
-                <div class="horizontal-track">
-                    <!-- РАБОТА 1 -->
-                    <div class="work-panel" style="background-image: url('https://i.vimeocdn.com/video/1393693240-d667613531b7899538c227847240f13501a39d8920b78c935d886a113331a90c-d?mw=1800&q=70');">
-                        <div class="work-content">
-                            <h2 class="work-title">Выпусти меня</h2>
-                            <p class="work-desc">Психологический триллер. Роль: режиссер, сценарист.</p>
-                            <a href="https://vimeo.com/ellinsky/letmeout" target="_blank" class="work-link">Смотреть трейлер</a>
-                        </div>
-                    </div>
-                    <!-- РАБОТА 2 -->
-                    <div class="work-panel" style="background-image: url('https://i.vimeocdn.com/video/1408018335-9502b70f074d6c4d8e57630737a329d79904949514e8b0931215b2e666a34c1b-d?mw=1800&q=70');">
-                        <div class="work-content">
-                            <h2 class="work-title">Номер</h2>
-                            <p class="work-desc">Драма. Роль: режиссер, сценарист.</p>
-                            <a href="https://vimeo.com/ellinsky/theroom" target="_blank" class="work-link">Смотреть фильм</a>
-                        </div>
-                    </div>
-                     <!-- РАБОТА 3 -->
-                    <div class="work-panel" style="background-image: url('https://i.vimeocdn.com/video/723405788-251f2f815a510f0f354784742a177218684784f107f1f35a4d360aa4f8c148f3-d?mw=1800&q=70');">
-                         <div class="work-content">
-                            <h2 class="work-title">Таиланд Инвест</h2>
-                            <p class="work-desc">Имиджевая реклама. Роль: режиссер.</p>
-                            <a href="https://vimeo.com/ellinsky/thai" target="_blank" class="work-link">Смотреть ролик</a>
-                        </div>
-                    </div>
-                     <!-- РАБОТА 4 (Пример с Кинопоиском) -->
-                    <div class="work-panel" style="background-image: url('https://via.placeholder.com/1920x1080.png/111/fff?text=Ваш+проект');">
-                         <div class="work-content">
-                            <h2 class="work-title">Ваш будущий проект</h2>
-                            <p class="work-desc">Жанр. Роль: режиссер.</p>
-                            <a href="#" target="_blank" class="work-link">Страница на Кинопоиске</a>
-                        </div>
-                    </div>
+                    <h2>Режиссер, сценарист, креативный продюсер.</h2>
+                    <p>Создаю визуальные истории, где драматургическая глубина и организационная точность работают как единый выразительный язык. Моя сила — в редком сочетании творческой интуиции и системного подхода. Двигаясь от смысла к форме, от ощущения к четкой постановке, я создаю проекты, которые трансформируют зрителя.</p>
                 </div>
             </div>
         </section>
 
-        <!-- СЦЕНА 4: БИБЛИОТЕКА (ИНСТРУМЕНТЫ) -->
-        <section class="panel tools">
-            <div class="content">
-                <h1 class="section-title">Инструменты для авторов</h1>
-                <p>Бесплатные методические материалы, разработанные для усиления ваших историй.</p>
-                <div class="tools-grid">
-                    <a href="https://Sator9189.github.io/AI-for-Writers" target="_blank" class="tool-card">
-                        <h3 class="tool-title">Инструкция по работе с LLM</h3>
-                        <p class="tool-desc">Профессиональное руководство по использованию ИИ в работе над сценариями и художественными текстами.</p>
-                        <div class="tool-status">Открыть &rarr;</div>
-                    </a>
-                    <a href="#" class="tool-card">
-                        <h3 class="tool-title">Протокол «Нейродраматургия»</h3>
-                        <p class="tool-desc">Диагностический инструмент для стресс-теста вашей истории на предмет ее способности захватывать внимание.</p>
-                        <div class="tool-status">Скоро...</div>
-                    </a>
-                </div>
-            </div>
-        </section>
+    <!-- СЦЕНА 3: ИЗБРАННЫЕ РАБОТЫ -->
+    <section class="section works">
+        <div class="container">
+            <h2 class="section-title">Избранные работы</h2>
+            <div class="works-container">
+                
+                <!-- РАБОТА 1 -->
+                <a href="https://vimeo.com/ellinsky/letmeout" target="_blank" class="work-banner" style="background-image: url('https://i.vimeocdn.com/video/1393693240-d667613531b7899538c227847240f13501a39d8920b78c935d886a113331a90c-d?mw=1800&q=70');">
+                    <div class="work-info">
+                        <h3 class="work-title">Х/ф «Выпусти меня»</h3>
+                        <p class="work-role">Режиссер, сценарист</p>
+                    </div>
+                </a>
 
-        <!-- СЦЕНА 5: ФИНАЛЬНЫЕ ТИТРЫ (КОНТАКТЫ) -->
-        <section class="panel contact">
-            <div class="content">
-                 <h1 class="section-title">Связаться</h1>
-                 <p>Готовы обсудить ваш проект?</p>
-                 <div class="contact-list">
-                    <a href="https://t.me/ellinsky" target="_blank">Telegram</a>
-                    <a href="mailto:nik@ellinsky.com">Email</a>
-                    <a href="https://vimeo.com/ellinsky" target="_blank">Vimeo</a>
-                 </div>
+                <!-- РАБОТА 2 -->
+                <a href="https://vimeo.com/ellinsky/theroom" target="_blank" class="work-banner" style="background-image: url('https://i.vimeocdn.com/video/1408018335-9502b70f074d6c4d8e57630737a329d79904949514e8b0931215b2e666a34c1b-d?mw=1800&q=70');">
+                    <div class="work-info">
+                        <h3 class="work-title">К/ф «Номер»</h3>
+                        <p class="work-role">Режиссер, сценарист</p>
+                    </div>
+                </a>
+                
+                <!-- РАБОТА 3 -->
+                <a href="https://vimeo.com/ellinsky/thai" target="_blank" class="work-banner" style="background-image: url('https://i.vimeocdn.com/video/723405788-251f2f815a510f0f354784742a177218684784f107f1f35a4d360aa4f8c148f3-d?mw=1800&q=70');">
+                    <div class="work-info">
+                        <h3 class="work-title">Таиланд Инвест</h3>
+                        <p class="work-role">Режиссер</p>
+                    </div>
+                </a>
+                
             </div>
-        </section>
-
-    </div>
+        </div>
+    </section>
     
-    <script>
-        // Код для горизонтального скролла
-        const track = document.querySelector('.horizontal-track');
-        const scrollContainer = document.querySelector('.horizontal-scroll-container');
-        
-        window.addEventListener('scroll', () => {
-            const top = scrollContainer.getBoundingClientRect().top;
-            const scrollableHeight = scrollContainer.offsetHeight - window.innerHeight;
-            
-            if (top < 0 && top > -scrollableHeight) {
-                const percentage = -top / scrollableHeight;
-                const distance = (track.scrollWidth - window.innerWidth) * percentage;
-                track.style.transform = `translateX(-${distance}px)`;
-            }
-        });
+    <!-- СЦЕНА 4: ИНСТРУМЕНТЫ ДЛЯ АВТОРОВ -->
+    <section class="section tools">
+        <div class="container">
+            <h2 class="section-title">Инструменты для авторов</h2>
+            <p style="max-width: 800px; margin-bottom: 60px;">Бесплатные методические материалы, разработанные для усиления ваших историй. Глубокие разборы, профессиональные инструкции и практические инструменты.</p>
+            <div class="tools-grid">
+                
+                <a href="https://Sator9189.github.io/AI-for-Writers" target="_blank" class="tool-card">
+                    <h3 class="tool-title">Инструкция по работе с LLM</h3>
+                    <p class="tool-desc">Профессиональное руководство по эффективному использованию больших языковых моделей (GPT-4o, Claude 3) в работе над сценариями и художественными текстами.</p>
+                    <span class="tool-status">Открыть &rarr;</span>
+                </a>
 
-        // Код для анимации появления секций
-        const sections = document.querySelectorAll('.panel, .section');
+                <a href="#" class="tool-card">
+                    <h3 class="tool-title">Протокол «Нейродраматургия»</h3>
+                    <p class="tool-desc">Диагностический инструмент для стресс-теста вашей истории на предмет ее способности захватывать и удерживать внимание зрителя.</p>
+                    <span class="tool-status">Скоро...</span>
+                </a>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- ФУТЕР / КОНТАКТЫ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Copyright</h3>
+                    <p>© 2025 ELLINSKY</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:nik@ellinsky.com">nik@ellinsky.com</a></li>
+                        <li><a href="https://t.me/ellinsky" target="_blank">Telegram</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="https://vimeo.com/ellinsky" target="_blank">Vimeo</a></li>
+                        <!-- ДОБАВЬТЕ ССЫЛКУ НА КИНОПОИСК, ЕСЛИ НУЖНО -->
+                        <!-- <li><a href="#" target="_blank">Кинопоиск</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Анимация появления секций при скролле
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.15 });
 
-        sections.forEach(section => {
+        document.querySelectorAll('.section').forEach(section => {
             observer.observe(section);
         });
-
     </script>
 </body>
 </html>
